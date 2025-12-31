@@ -1,7 +1,8 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import Nav from './components/Nav'
+import Home from './pages/Home'
 import Transition from './common/Transition'
+import Nav from './components/Nav'
 
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
     <Transition>
 
     <Routes>
-      <Route path='/' element={<Nav/>}/>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/nav' element={<Nav/>}/>
     </Routes>
 
     </Transition>
