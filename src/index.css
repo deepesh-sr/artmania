@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+/* Custom Font Definitions */
+@layer base {
+  :root {
+    --font-poppins: 'Poppins', sans-serif;
+  }
+  
+  body {
+    font-family: var(--font-poppins);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* All text elements use Poppins */
+  h1, h2, h3, h4, h5, h6, p, span, a, button, div, li {
+    font-family: var(--font-poppins);
+  }
+}
