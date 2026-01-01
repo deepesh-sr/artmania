@@ -1,51 +1,52 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FAFBFC]/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-3xl border-white/20 ">
+      <div className="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center">
         {/* Logo */}
-        <div>
-          <h2 className="text-2xl md:text-3xl font-serif text-black tracking-tight">
+        <Link to="/">
+          <h2 className="text-2xl md:text-3xl text-black tracking-tight hover:opacity-80 transition-opacity font-medium" style={{ fontFamily: 'Poppins, sans-serif' }}>
             Sketchostory
           </h2>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          <a 
-            href="#home" 
-            className="text-base text-gray-700 hover:text-black transition-colors duration-200 border-b-2 border-black pb-1"
+          <Link 
+            to="/" 
+            className="text-base text-gray-700 hover:text-black transition-colors duration-200 font-regular"
           >
             Home
-          </a>
-          <a 
-            href="#about" 
-            className="text-base text-gray-700 hover:text-black transition-colors duration-200"
+          </Link>
+          <Link 
+            to="/about" 
+            className="text-base text-gray-700 hover:text-black transition-colors duration-200 font-regular"
           >
             About us
-          </a>
-          <a 
-            href="#services" 
-            className="text-base text-gray-700 hover:text-black transition-colors duration-200"
+          </Link>
+          <Link 
+            to="/services" 
+            className="text-base text-gray-700 hover:text-black transition-colors duration-200 font-regular"
           >
             Services
-          </a>
-          <a 
-            href="#portfolio" 
-            className="text-base text-gray-700 hover:text-black transition-colors duration-200"
+          </Link>
+          <Link 
+            to="/portfolio" 
+            className="text-base text-gray-700 hover:text-black transition-colors duration-200 font-regular"
           >
             Portfolio
-          </a>
-          <a 
-            href="#contact" 
-            className="text-base text-gray-700 hover:text-black transition-colors duration-200"
+          </Link>
+          <Link 
+            to="/contact" 
+            className="text-base text-gray-700 hover:text-black transition-colors duration-200 font-regular"
           >
             Contact
-          </a>
-          <button className="px-6 py-2 border border-gray-800 rounded-full text-gray-800 hover:bg-gray-800 hover:text-white transition-all duration-300">
+          </Link>
+          <button className="px-6 py-2 border border-gray-800 rounded-full text-gray-800 hover:bg-gray-800 hover:text-white transition-all duration-300 font-light text-sm">
             SUPPORT OUR WORK
           </button>
         </div>
@@ -69,42 +70,42 @@ const Nav = () => {
         }`}
       >
         <div className="flex flex-col gap-4 px-6 py-6">
-          <a 
-            href="#home" 
-            className="text-base text-gray-700 hover:text-black transition-colors duration-200"
+          <Link 
+            to="/" 
+            className="text-base text-gray-700 hover:text-black transition-colors duration-200 font-light"
             onClick={() => setIsMenuOpen(false)}
           >
             Home
-          </a>
-          <a 
-            href="#about" 
-            className="text-base text-gray-700 hover:text-black transition-colors duration-200"
+          </Link>
+          <Link 
+            to="/about" 
+            className="text-base text-gray-700 hover:text-black transition-colors duration-200 font-light"
             onClick={() => setIsMenuOpen(false)}
           >
             About us
-          </a>
-          <a 
-            href="#services" 
-            className="text-base text-gray-700 hover:text-black transition-colors duration-200"
+          </Link>
+          <Link 
+            to="/services" 
+            className="text-base text-gray-700 hover:text-black transition-colors duration-200 font-light"
             onClick={() => setIsMenuOpen(false)}
           >
             Services
-          </a>
-          <a 
-            href="#portfolio" 
-            className="text-base text-gray-700 hover:text-black transition-colors duration-200"
+          </Link>
+          <Link 
+            to="/portfolio" 
+            className="text-base text-gray-700 hover:text-black transition-colors duration-200 font-light"
             onClick={() => setIsMenuOpen(false)}
           >
             Portfolio
-          </a>
-          <a 
-            href="#contact" 
-            className="text-base text-gray-700 hover:text-black transition-colors duration-200"
+          </Link>
+          <Link 
+            to="/contact" 
+            className="text-base text-gray-700 hover:text-black transition-colors duration-200 font-light"
             onClick={() => setIsMenuOpen(false)}
           >
             Contact
-          </a>
-          <button className="px-6 py-2 border border-gray-800 rounded-full text-gray-800 hover:bg-gray-800 hover:text-white transition-all duration-300 text-sm">
+          </Link>
+          <button className="px-6 py-2 border border-gray-800 rounded-full text-gray-800 hover:bg-gray-800 hover:text-white transition-all duration-300 text-sm font-light">
             SUPPORT OUR WORK
           </button>
         </div>

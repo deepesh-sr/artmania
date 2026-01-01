@@ -1,43 +1,41 @@
 import './App.css'
-import { Route, Routes, useLocation } from 'react-router-dom'
-import { Suspense, lazy } from 'react'
-import Transition from './common/Transition'
+import { Route, Routes } from 'react-router-dom'
+import { lazy } from 'react'
+import Nav from './components/Nav'
 
 // Lazy load components for better performance
 const Home = lazy(() => import('./pages/Home'))
-const Nav = lazy(() => import('./components/Nav'))
+const ServicesPage = lazy(() => import('./pages/ServicesPage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const PortfolioPage = lazy(() => import('./pages/PortfolioPage'))
+const ContactPage = lazy(() => import('./pages/ContactPage'))
 const Model = lazy(() => import('./components/Model'))
 
-// Loading component
-const Loading = () => (
-  <div className="h-screen w-full flex items-center justify-center bg-black">
-    <div className="text-white text-xl animate-pulse">Loading...</div>
-  </div>
-)
-
 function App() {
-  const location = useLocation();
-
   return (
-    <Transition key={location.pathname}>
-      <Suspense fallback={<Loading />}>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/nav' element={<Nav />} />
-          <Route path='/d' element={<Model />} />
-          <Route path='*' element={
-            <div className="h-screen w-full flex items-center justify-center bg-black">
-              <div className="text-center">
-                <h1 className="text-2xl text-white mb-4">404 - Page Not Found</h1>
-                <a href="/" className="text-blue-400 hover:text-blue-300 transition-colors">
-                  Go back to home
-                </a>
-              </div>
+    <>
+      {/* Persistent Navigation */}
+      <Nav />
+      
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/services' element={<ServicesPage />} />
+        <Route path='/about' element={<AboutPage />} />
+        <Route path='/portfolio' element={<PortfolioPage />} />
+        <Route path='/contact' element={<ContactPage />} />
+        <Route path='/d' element={<Model />} />
+        <Route path='*' element={
+          <div className="h-screen w-full flex items-center justify-center bg-[#FAFBFC]">
+            <div className="text-center pt-20">
+              <h1 className="text-2xl text-gray-900 mb-4">404 - Page Not Found</h1>
+              <a href="/" className="text-blue-500 hover:text-blue-600 transition-colors">
+                Go back to home
+              </a>
             </div>
-          } />
-        </Routes>
-      </Suspense>
-    </Transition>
+          </div>
+        } />
+      </Routes>
+    </>
   )
 }
 

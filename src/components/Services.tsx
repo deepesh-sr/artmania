@@ -62,33 +62,6 @@ const Services = () => {
         '-=0.4'
       )
 
-    // Animate service cards
-    const cards = cardsRef.current?.children
-    if (cards) {
-      gsap.fromTo(
-        Array.from(cards),
-        {
-          opacity: 0,
-          y: 60,
-          scale: 0.95
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: cardsRef.current,
-            start: 'top 80%',
-            end: 'top 40%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      )
-    }
-
     // Animate design process section
     const processTl = gsap.timeline({
       scrollTrigger: {

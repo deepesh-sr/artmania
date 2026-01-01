@@ -22,32 +22,26 @@ const Portfolio = () => {
       id: '1',
       title: 'Luxury Interior Design',
       description: 'Modern luxury residential design with bespoke art installations',
-      youtubeId: 'dQw4w9WgXcQ' // Replace with actual video ID
+      youtubeId: 'vqxMt355jiA' // Replace with actual video ID
     },
     {
       id: '2',
       title: 'Public Art Installation',
       description: 'Large-scale sculpture installation in urban landscape',
-      youtubeId: 'dQw4w9WgXcQ' // Replace with actual video ID
+      youtubeId: 'rGnO0cPHRMY' // Replace with actual video ID
     },
     {
       id: '3',
       title: 'Fountain Design Project',
       description: 'Majestic water feature with intricate bronze sculptures',
-      youtubeId: 'dQw4w9WgXcQ' // Replace with actual video ID
+      youtubeId: 'JBTZEOkhN-Q' // Replace with actual video ID
     },
     {
       id: '4',
       title: 'Commercial Space Art',
       description: 'Contemporary art pieces for corporate headquarters',
-      youtubeId: 'dQw4w9WgXcQ' // Replace with actual video ID
+      youtubeId: 'gRB644T8yV4' // Replace with actual video ID
     },
-    {
-      id: '5',
-      title: 'Landscape Architecture',
-      description: 'Transforming outdoor spaces with artistic vision',
-      youtubeId: 'dQw4w9WgXcQ' // Replace with actual video ID
-    }
   ]
 
   useEffect(() => {

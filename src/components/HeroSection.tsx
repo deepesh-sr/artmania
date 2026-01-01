@@ -7,6 +7,7 @@ const HeroSection = () => {
   const descriptionRef = useRef<HTMLHeadingElement>(null)
   const blob1Ref = useRef<HTMLDivElement>(null)
   const blob2Ref = useRef<HTMLDivElement>(null)
+  const bgImageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.3 })
@@ -91,73 +92,78 @@ const HeroSection = () => {
         })
       }
     })
+
+    // Animate background image - horizontal infinite loop with faster speed
+    if (bgImageRef.current) {
+      gsap.to(bgImageRef.current, {
+        x: '-50%',
+        duration: 12,
+        repeat: -1,
+        ease: 'none',
+      })
+    }
   }, [])
 
   return (
     <div className="relative min-h-screen w-full bg-white overflow-hidden flex items-center justify-center px-6 py-20">
-      {/* Background Images - Art Room Aesthetic */}
-      <div
-        ref={blob1Ref}
-        className="absolute top-0 left-0 w-72 h-96 opacity-80"
-        style={{ 
-          backgroundImage: 'url(https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      />
-      <div
-        ref={blob2Ref}
-        className="absolute top-0 right-0 w-72 h-96 opacity-80"
-        style={{ 
-          backgroundImage: 'url(https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      />
-      
-      {/* White overlay to blend images */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-90" />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/60 to-white" />
+       <div 
+            ref={bgImageRef}
+            className="absolute left-0 right-0 top-0 bottom-0 w-[200%] h-screen "
+            style={{
+              backgroundImage: 'url(https://finternetlab.io/wp-content/uploads/2025/09/Hero-BG-scaled.jpg)',
+              backgroundSize: '100% 100%',
+              backgroundPosition: 'left center',
+              backgroundRepeat: 'repeat-x',
+              opacity: 1,
+              zIndex: 0,
+            }}
+          />
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
-        {/* Title */}
-        <div ref={titleRef} className="mb-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight tracking-wide">
-            <span className="inline-block text-gray-900 font-normal uppercase">When Design</span>
-          </h1>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mt-2 tracking-wide">
-            <span className="inline-block text-gray-900 font-normal uppercase">Brings Beauty Into</span>
-          </h1>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mt-2 tracking-wide">
-            <span className="inline-block text-gray-900 font-normal uppercase">Your Space</span>
-          </h1>
-        </div>
+      <div className="relative z-10 max-w-6xl mx-auto text-center">
+        {/* Single Screen - Title and About Combined */}
+        <div className='relative h-screen flex flex-col justify-center items-center overflow-hidden px-6 py-12'>
+          
+          {/* Overlay to soften the background */}
+          <div className="absolute inset-0 bg-white/2" style={{ zIndex: 1 }} />
 
-        {/* CTA Button */}
-        <div className="mb-20">
-          <button
-            ref={subtitleRef}
-            className="px-10 py-3 bg-gray-800 text-white text-sm md:text-base font-light tracking-wider hover:bg-gray-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 uppercase"
-          >
-            Contact Us
-          </button>
-        </div>
+          {/* Hero Title Section - Top Half */}
+          <div className="flex-1 flex flex-col justify-end items-center relative z-10 ">
+            <div ref={titleRef} className="mb-1 flex flex-col items-center">
+              <h1
+                className="text-4xl md:text-5xl lg:text-7xl leading-tight  font-light"
+                style={{ fontFamily: 'ivypresto-display, sans-serif' }}
+              >
+                <span className="inline-block text-gray-900">When Design</span>
+              </h1>
+              <h1
+                className="text-4xl md:text-5xl lg:text-7xl leading-tight  font-light"
+                style={{ fontFamily: 'ivypresto-display, sans-serif' }}
+              >
+                <span className="inline-block text-gray-900" >Brings Beauty Into</span>
+              </h1>
+              <h1
+                className="text-4xl md:text-5xl lg:text-7xl leading-tight  font-light"
+                style={{ fontFamily: 'ivypresto-display, sans-serif' }}
+              >
+                <span className="inline-block text-gray-900" style={{color : 'rgb(118, 165, 244)'}}>Your Space</span>
+              </h1>
+            </div>
+          </div>
 
-        {/* About Section */}
-        <div className="mt-32 pt-16 border-t border-gray-200">
-          <h2 
-            ref={descriptionRef}
-            className="text-2xl md:text-3xl lg:text-4xl font-normal text-gray-900 mb-8"
-          >
-            Design is what we do best
-          </h2>
-          <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto mb-10 font-light">
-            At Sketchostory, we are storytellers of spaces, weaving tales of natural beauty through our innovative landscaping creations. Our journey began with a passion for transforming ordinary landscapes into immersive experiences. We've spent years perfecting our craft, always seeking to transcend the boundaries of traditional landscaping..
-          </p>
-          <button className="px-10 py-3 bg-gray-800 text-white text-sm md:text-base font-light tracking-wider hover:bg-gray-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 uppercase">
-            Begin Your Design Story
-          </button>
+          {/* About Section - Bottom Half */}
+          <div className="flex-1 flex flex-col justify-start items-center max-w-4xl relative z-10 pt-6">
+           
+            <p className="text-sm md:text-base lg:text-lg text-gray-600 leading-relaxed mb-10 font-light px-4 max-w-2xl text-center tracking-wide">
+              At Sketchostory, we are storytellers of spaces, weaving tales of natural beauty through our innovative landscaping creations. Our journey began with a passion for transforming ordinary landscapes into immersive experiences.
+            </p>
+            <button 
+              ref={subtitleRef}
+              className="px-10 py-3 rounded-full bg-gray-900 text-white text-xs md:text-sm font-medium tracking-[0.2em] transition-all duration-100 uppercase border border-gray-900 hover:text-gray-900 hover:bg-transparent"
+            >
+              Begin Your Design Story
+            </button>
+          </div>
         </div>
       </div>
     </div>
