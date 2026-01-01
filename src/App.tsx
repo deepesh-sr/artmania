@@ -9,7 +9,6 @@ const ServicesPage = lazy(() => import('./pages/ServicesPage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
-const Model = lazy(() => import('./components/Model'))
 
 function App() {
   return (
@@ -23,7 +22,6 @@ function App() {
         <Route path='/about' element={<AboutPage />} />
         <Route path='/portfolio' element={<PortfolioPage />} />
         <Route path='/contact' element={<ContactPage />} />
-        <Route path='/d' element={<Model />} />
         <Route path='*' element={
           <div className="h-screen w-full flex items-center justify-center bg-[#FAFBFC]">
             <div className="text-center pt-20">
